@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "XCOQHlzZUQh7fKbJKI9/QJILCiBDSH/BHnvhi2tGW1zpJ+rgwEABj/WxqVHpM1A69kR0pDfRDMCjz8h35I4hDA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Asus\\Desktop\\HTTP\\APIDolar\\APIDolar.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Asus\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
