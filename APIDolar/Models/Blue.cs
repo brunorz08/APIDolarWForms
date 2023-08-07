@@ -6,9 +6,10 @@ using System.Threading.Tasks;
 
 namespace APIDolar.Models
 {
-    public class Casa
+    public class Blue
     {
-        public string? compra { get; set; }
-        public string? venta { get; set; }
+        public double value_avg { get; set; }
+        public double value_sell { get; set; }
+        public double value_buy { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace APIDolar.Models
 {
     public class Casas2
     {
-        public Casa casa { get; set; }
+        public Casa? casa { get; set; }
 
     }
 }

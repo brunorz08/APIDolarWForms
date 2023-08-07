@@ -11,13 +11,13 @@ namespace APIDolar.Models
     {
         public static async Task<List<Casas2>> ObtenerCasas()
         {
-            string apiUrl = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
+            using (HttpClient client = new HttpClient())
+            {
+                string apiUrl = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
 
             List<Casas2>? casaList = new List<Casas2>();
 
-
-            HttpClient httpClient = new HttpClient();
-            HttpResponseMessage respuesta = await httpClient.GetAsync(apiUrl);
+            HttpResponseMessage respuesta = await client.GetAsync(apiUrl);
 
             if (respuesta.IsSuccessStatusCode)
             {
@@ -29,6 +29,32 @@ namespace APIDolar.Models
 
 
             return casaList;
+            }
+        }
+
+       public static async Task<Dolares> ObtenerDolares()
+        {
+            using (HttpClient client = new HttpClient())
+            {
+
+
+                string url = "https://api.bluelytics.com.ar/v2/latest"; // Reemplaza con la URL real de la API que proporciona los datos
+                Dolares dolares = new Dolares();
+
+                HttpResponseMessage response = await client.GetAsync(url);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string jsonResponse = await response.Content.ReadAsStringAsync();
+
+                     dolares = JsonConvert.DeserializeObject<Dolares>(jsonResponse);
+
+                    
+                }
+                return dolares;
+
+            }
+
         }
 
     }

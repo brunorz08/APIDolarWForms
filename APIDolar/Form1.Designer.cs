@@ -333,9 +333,9 @@
             label8.ForeColor = Color.Green;
             label8.Location = new Point(22, 11);
             label8.Name = "label8";
-            label8.Size = new Size(102, 19);
+            label8.Size = new Size(93, 19);
             label8.TabIndex = 8;
-            label8.Text = "Dolar Bolsa";
+            label8.Text = "Dolar MEP";
             // 
             // panel5
             // 

@@ -23,15 +23,16 @@ namespace APIDolar
         public async Task CargarDatos()
         {
             List<Casas2> casaList = await API.ObtenerCasas();
-            lblvalorventaoficial.Text = casaList[0].casa.venta.ToString();
-            lblvalorcompraoficial.Text = casaList[0].casa.compra.ToString();
-            lblblueventa.Text = casaList[1].casa.venta.ToString();
-            lblbluecompra.Text = casaList[1].casa.compra.ToString();
-            lblcompraccl.Text = casaList[3].casa.compra.ToString();
-            lblventaccl.Text = casaList[3].casa.venta.ToString();
-            lblcomprabolsa.Text = casaList[4].casa.compra.ToString();
-            lblventabolsa.Text = casaList[4].casa.venta.ToString();
-            lblcompraturista.Text = casaList[6].casa.compra.ToString();
+            Dolares dolar = await API.ObtenerDolares();
+            lblvalorventaoficial.Text = '$' + dolar.oficial.value_sell.ToString();
+            lblvalorcompraoficial.Text = '$' + dolar.oficial.value_buy.ToString();
+            lblblueventa.Text = '$' + dolar.blue.value_sell.ToString();
+            lblbluecompra.Text = '$' + dolar.blue.value_buy.ToString();
+            lblcompraccl.Text = '$' + casaList[3].casa.compra.ToString();
+            lblventaccl.Text = '$' + casaList[3].casa.venta.ToString();
+            lblcomprabolsa.Text = '$' + casaList[4].casa.compra.ToString();
+            lblventabolsa.Text = '$' + casaList[4].casa.venta.ToString();
+            lblcompraturista.Text = '$' + casaList[6].casa.compra.ToString();
             lblventaturista.Text = casaList[6].casa.venta.ToString();
 
 
