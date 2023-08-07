@@ -1,10 +1,15 @@
 using APIDolar.Models;
 using System.ComponentModel;
+using System.Net;
+using System.Net.Mail;
+using Timer = System.Windows.Forms.Timer;
 
 namespace APIDolar
 {
     public partial class Form1 : Form
     {
+
+
 
         public Form1()
         {
@@ -17,11 +22,13 @@ namespace APIDolar
         private async void Form1_Load(object sender, EventArgs e)
         {
             await CargarDatos();
+            
         }
 
 
         public async Task CargarDatos()
         {
+            
             List<Casas2> casaList = await API.ObtenerCasas();
             Dolares dolar = await API.ObtenerDolares();
             lblvalorventaoficial.Text = '$' + dolar.oficial.value_sell.ToString();
@@ -35,6 +42,7 @@ namespace APIDolar
             lblcompraturista.Text = '$' + casaList[6].casa.compra.ToString();
             lblventaturista.Text = casaList[6].casa.venta.ToString();
 
+            
 
         }
 
@@ -52,5 +60,25 @@ namespace APIDolar
         {
 
         }
+
+        private async void btnactualizar_ClickAsync(object sender, EventArgs e)
+        {
+
+            try
+            {
+                await CargarDatos();
+                lblok2.Text = "OK";
+            }
+
+            catch
+            {
+                lblok2.Text = "Error";
+            }
+
+
+        }
+
+        
     }
+
 }

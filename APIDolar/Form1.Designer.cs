@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             panel1 = new Panel();
             lblvalorcompraoficial = new Label();
             lblvalorventaoficial = new Label();
@@ -59,6 +60,10 @@
             label13 = new Label();
             label14 = new Label();
             label15 = new Label();
+            btnactualizar = new Button();
+            lblok = new Label();
+            lblok2 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel2.SuspendLayout();
@@ -403,12 +408,53 @@
             label15.TabIndex = 0;
             label15.Text = "Dolar Turista";
             // 
+            // btnactualizar
+            // 
+            btnactualizar.BackColor = Color.FromArgb(192, 255, 192);
+            btnactualizar.Font = new Font("Trebuchet MS", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            btnactualizar.ForeColor = SystemColors.ActiveCaptionText;
+            btnactualizar.Location = new Point(385, 326);
+            btnactualizar.Name = "btnactualizar";
+            btnactualizar.Size = new Size(145, 52);
+            btnactualizar.TabIndex = 6;
+            btnactualizar.Text = "ACTUALIZAR";
+            btnactualizar.UseVisualStyleBackColor = false;
+            btnactualizar.Click += btnactualizar_ClickAsync;
+            // 
+            // lblok
+            // 
+            lblok.AutoSize = true;
+            lblok.BackColor = Color.Transparent;
+            lblok.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            lblok.ForeColor = Color.FromArgb(192, 255, 192);
+            lblok.Location = new Point(433, 381);
+            lblok.Name = "lblok";
+            lblok.Size = new Size(0, 17);
+            lblok.TabIndex = 7;
+            // 
+            // lblok2
+            // 
+            lblok2.AutoSize = true;
+            lblok2.Font = new Font("Myanmar Text", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblok2.ForeColor = Color.FromArgb(192, 255, 192);
+            lblok2.Location = new Point(444, 381);
+            lblok2.Name = "lblok2";
+            lblok2.Size = new Size(0, 24);
+            lblok2.TabIndex = 8;
+            // 
+            // timer1
+            // 
+           
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ActiveCaptionText;
             ClientSize = new Size(746, 461);
+            Controls.Add(lblok2);
+            Controls.Add(lblok);
+            Controls.Add(btnactualizar);
             Controls.Add(panel5);
             Controls.Add(panel4);
             Controls.Add(panel3);
@@ -429,6 +475,7 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -464,5 +511,9 @@
         private Label label13;
         private Label label14;
         private Label label15;
+        private Button btnactualizar;
+        private Label lblok;
+        private Label lblok2;
+        private System.Windows.Forms.Timer timer1;
     }
 }
