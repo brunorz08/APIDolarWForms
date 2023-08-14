@@ -21,8 +21,14 @@ namespace APIDolar
 
         private async void Form1_Load(object sender, EventArgs e)
         {
+            try { 
             await CargarDatos();
-            
+            }
+            catch(WebException ex)
+            {
+                MostrarErrorDeApi();
+            }
+
         }
 
 
@@ -31,19 +37,24 @@ namespace APIDolar
             
             List<Casas2> casaList = await API.ObtenerCasas();
             Dolares dolar = await API.ObtenerDolares();
-            lblvalorventaoficial.Text = '$' + dolar.oficial.value_sell.ToString();
-            lblvalorcompraoficial.Text = '$' + dolar.oficial.value_buy.ToString();
-            lblblueventa.Text = '$' + dolar.blue.value_sell.ToString();
-            lblbluecompra.Text = '$' + dolar.blue.value_buy.ToString();
+            lblvalorventaoficial.Text = '$' + dolar.oficial.value_sell.ToString("F2");
+            lblvalorcompraoficial.Text = '$' + dolar.oficial.value_buy.ToString("F2");
+            lblblueventa.Text = '$' + dolar.blue.value_sell.ToString("F2");
+            lblbluecompra.Text = '$' + dolar.blue.value_buy.ToString("F2");
             lblcompraccl.Text = '$' + casaList[3].casa.compra.ToString();
             lblventaccl.Text = '$' + casaList[3].casa.venta.ToString();
             lblcomprabolsa.Text = '$' + casaList[4].casa.compra.ToString();
             lblventabolsa.Text = '$' + casaList[4].casa.venta.ToString();
-            lblcompraturista.Text = '$' + casaList[6].casa.compra.ToString();
-            lblventaturista.Text = casaList[6].casa.venta.ToString();
+            lblcompraturista.Text = casaList[6].casa.compra.ToString();
+            lblventaturista.Text = '$' + casaList[6].casa.venta.ToString();
 
             
 
+        }
+
+        private void MostrarErrorDeApi()
+        {
+            MessageBox.Show("No se pudo conectar a la API. Verifica la conexión o inténtalo más tarde.", "Error de API", MessageBoxButtons.OK, MessageBoxIcon.Error);
         }
 
         private void label1_Click(object sender, EventArgs e)

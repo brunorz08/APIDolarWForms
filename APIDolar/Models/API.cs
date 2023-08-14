@@ -14,25 +14,24 @@ namespace APIDolar.Models
             using (HttpClient client = new HttpClient())
             {
                 string apiUrl = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
+                List<Casas2>? casaList = new List<Casas2>();
 
-            List<Casas2>? casaList = new List<Casas2>();
+                HttpResponseMessage respuesta = await client.GetAsync(apiUrl);
 
-            HttpResponseMessage respuesta = await client.GetAsync(apiUrl);
+                if (respuesta.IsSuccessStatusCode)
+                {
+                    string json = await respuesta.Content.ReadAsStringAsync();
 
-            if (respuesta.IsSuccessStatusCode)
-            {
-                string json = await respuesta.Content.ReadAsStringAsync();
-
-                casaList = JsonConvert.DeserializeObject<List<Casas2>>(json);
-            }
-
+                    casaList = JsonConvert.DeserializeObject<List<Casas2>>(json);
+                }
 
 
-            return casaList;
+
+                return casaList;
             }
         }
 
-       public static async Task<Dolares> ObtenerDolares()
+        public static async Task<Dolares> ObtenerDolares()
         {
             using (HttpClient client = new HttpClient())
             {
@@ -47,9 +46,9 @@ namespace APIDolar.Models
                 {
                     string jsonResponse = await response.Content.ReadAsStringAsync();
 
-                     dolares = JsonConvert.DeserializeObject<Dolares>(jsonResponse);
+                    dolares = JsonConvert.DeserializeObject<Dolares>(jsonResponse);
 
-                    
+
                 }
                 return dolares;
 
