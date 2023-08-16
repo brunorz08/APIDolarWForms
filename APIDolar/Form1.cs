@@ -24,9 +24,9 @@ namespace APIDolar
             try { 
             await CargarDatos();
             }
-            catch(WebException ex)
+            catch(Exception ex)
             {
-                MostrarErrorDeApi();
+                
             }
 
         }
@@ -34,9 +34,9 @@ namespace APIDolar
 
         public async Task CargarDatos()
         {
-            
-            List<Casas2> casaList = await API.ObtenerCasas();
             Dolares dolar = await API.ObtenerDolares();
+            List<Casas2> casaList = await API.ObtenerCasas();
+            
             lblvalorventaoficial.Text = '$' + dolar.oficial.value_sell.ToString("F2");
             lblvalorcompraoficial.Text = '$' + dolar.oficial.value_buy.ToString("F2");
             lblblueventa.Text = '$' + dolar.blue.value_sell.ToString("F2");
@@ -46,16 +46,13 @@ namespace APIDolar
             lblcomprabolsa.Text = '$' + casaList[4].casa.compra.ToString();
             lblventabolsa.Text = '$' + casaList[4].casa.venta.ToString();
             lblcompraturista.Text = casaList[6].casa.compra.ToString();
-            lblventaturista.Text = '$' + casaList[6].casa.venta.ToString();
+            lblventaturista.Text = '$' + casaList[6].casa.venta;
 
             
 
         }
 
-        private void MostrarErrorDeApi()
-        {
-            MessageBox.Show("No se pudo conectar a la API. Verifica la conexión o inténtalo más tarde.", "Error de API", MessageBoxButtons.OK, MessageBoxIcon.Error);
-        }
+       
 
         private void label1_Click(object sender, EventArgs e)
         {

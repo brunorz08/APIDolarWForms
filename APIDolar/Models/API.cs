@@ -16,16 +16,22 @@ namespace APIDolar.Models
                 string apiUrl = "https://www.dolarsi.com/api/api.php?type=valoresprincipales";
                 List<Casas2>? casaList = new List<Casas2>();
 
-                HttpResponseMessage respuesta = await client.GetAsync(apiUrl);
-
-                if (respuesta.IsSuccessStatusCode)
+                try
                 {
-                    string json = await respuesta.Content.ReadAsStringAsync();
+                    HttpResponseMessage respuesta = await client.GetAsync(apiUrl);
 
-                    casaList = JsonConvert.DeserializeObject<List<Casas2>>(json);
+                    if (respuesta.IsSuccessStatusCode)
+                    {
+                        string json = await respuesta.Content.ReadAsStringAsync();
+
+                        casaList = JsonConvert.DeserializeObject<List<Casas2>>(json);
+                    }
                 }
+                catch(Exception ex) 
+                {
+                    MessageBox.Show("Error en la primera API: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-
+                }
 
                 return casaList;
             }
@@ -39,7 +45,7 @@ namespace APIDolar.Models
 
                 string url = "https://api.bluelytics.com.ar/v2/latest"; // Reemplaza con la URL real de la API que proporciona los datos
                 Dolares dolares = new Dolares();
-
+                try { 
                 HttpResponseMessage response = await client.GetAsync(url);
 
                 if (response.IsSuccessStatusCode)
@@ -49,6 +55,11 @@ namespace APIDolar.Models
                     dolares = JsonConvert.DeserializeObject<Dolares>(jsonResponse);
 
 
+                }
+                }
+                catch(Exception ex) 
+                {
+                    MessageBox.Show("Error en la segunda API: " + ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 return dolares;
 
